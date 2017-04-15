@@ -14,7 +14,7 @@
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		//echo "Connected successfully";
 
-   	$sql = "SELECT bairro FROM escola_endereco";
+   	$sql = "SELECT DISTINCT municipio FROM escola_geral ORDER BY municipio ASC";
 
 		$result = $conn->prepare($sql);
     try { $result->execute();}
@@ -26,7 +26,7 @@
 				//echo "Bairro: " . $row["bairro"]. "<br>";
 				?><script>
 					$( ".form-control" )
-						.append( "<option> <?php echo $row["bairro"]; ?> </option>" );
+						.append( "<option> <?php echo $row["municipio"]; ?> </option>" );
 				</script><?php
 			}
 		} else {
