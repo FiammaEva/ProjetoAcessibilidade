@@ -231,10 +231,19 @@
     </div> -->
     <div class="input-group">
       <div class="dropdown-home" style="padding-left: 20%;">
-        <select class="form-control" style="width: 90%;" required>
-          <option selected disabled> Escolha o seu Municipio... </option>
+        <select id="dropdown-municipio" name=municipio class="form-control" style="width: 90%;" required>
+          <option value"Escolha" selected disabled> Escolha o seu Municipio... </option>
+
         </select>
       </div>
+
+      <div class="dropdown-home" style="padding-left: 20%; padding-top: 4%;">
+        <select id="dropdown-bairro" name=bairro class="form-control" style="width: 90%;" required>
+          <option value"Escolha" selected disabled> Escolha o seu bairro... </option>
+
+        </select>
+      </div>
+
       <div class="input-group-btn">
         <button type="button" class="btn btn-danger" style="width: 10em;"> Buscar </button>
       </div>
@@ -499,6 +508,8 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 
 <script>
 $(document).ready(function(){
+  // Maintain selected value in dropdown-municipio
+  jQuery('#dropdown-municipio').val('<?php echo $_GET['municipio'];?>');
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
     // Make sure this.hash has a value before overriding default behavior
@@ -532,6 +543,16 @@ $(document).ready(function(){
     });
   });
 })
+</script>
+
+<script>
+  $( "#dropdown-municipio" ).change(function() {
+    municipio = $( "#dropdown-municipio option:selected" ).text();
+    $(this).parents().filter("form").submit();
+    //$.post('home.php', 'municipio=' + municipio, function (response) {
+      //alert(municipio);
+    //});
+  });
 </script>
 
 </body>
