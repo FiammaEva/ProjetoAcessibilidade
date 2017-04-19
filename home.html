@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link href="js/jquery-ui.min.css" rel="stylesheet">
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="bootstrap/css/style.css" rel="stylesheet">
 
@@ -12,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 
   <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
 
   <style>
@@ -221,7 +223,7 @@
 <div class="jumbotron text-center">
   <h1>Acessibilidade nas Escolas Públicas</h1>
   <p>Nós medimos o acesso e inclusão no sistema público de ensino.</p>
-  <form>
+  <form id="form-buscar">
     <!--- <div class="input-group">
       <input type="email" class="form-control" size="50" placeholder="Email Address" required>
     </div> -->
@@ -241,7 +243,7 @@
       </div>
 
       <div class="input-group-btn">
-        <button type="button" class="btn btn-danger" style="width: 10em;"> Buscar </button>
+          <button id="btn-buscar" type="button" class="btn btn-danger" style="width: 10em;"> Buscar </button>
       </div>
     </div>
   </form>
@@ -541,8 +543,25 @@ $(document).ready(function(){
 
 <script>
   $( "#dropdown-municipio" ).change(function() {
-    //municipio = $( "#dropdown-municipio option:selected" ).text();
-    $(this).parents().filter("form").submit();
+    $("#form-buscar").submit();
+  });
+</script>
+
+<script>
+  $( "#btn-buscar" ).click(function() {
+    // check dropdown-municipio
+    if ( $('#dropdown-municipio option:selected').text().trim() == 'Escolha o seu Municipio...' ) {
+      alert('Escolha o seu Municipio...');
+      return;
+    }
+    // check dropdown-bairro
+    if ( $('#dropdown-bairro option:selected').text().trim() == 'Escolha o seu bairro...' ) {
+      alert('Escolha o seu Bairro...');
+      return;
+    }
+    // if all dropdowns have been selected, then submit.
+    //$( "#form-buscar" ).submit();
+    window.location.href = "get_connection.php"
   });
 </script>
 

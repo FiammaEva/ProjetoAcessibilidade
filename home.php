@@ -33,7 +33,13 @@
 			echo "0 results";
 		}
 
-		if(!empty($_GET['municipio'])){ // If you are using same page, then it'll help you to detect ajax request.
+		// Check if dropdown-municipio already have a selected item
+		if(!empty($_GET['municipio'])){
+
+			// Check if dropdown-bairro already have a selected item
+			if(!empty($_GET['bairro'])){
+				header('Location: get_connection.php');
+			}
 
 			$municipio =  $_GET['municipio'];
 			$sql = "SELECT DISTINCT bairro FROM escola_geral WHERE municipio='$municipio' ORDER BY bairro ASC";
