@@ -550,7 +550,7 @@ $(document).ready(function(){
 <script>
   $( "#btn-buscar" ).click(function() {
     // check dropdown-municipio
-    if ( $('#dropdown-municipio option:selected').text().trim() == 'Escolha o seu Municipio...' ) {
+    if( $('#dropdown-municipio option:selected').text().trim() == 'Escolha o seu Municipio...' ) {
       alert('Escolha o seu Municipio...');
       return;
     }
@@ -561,7 +561,9 @@ $(document).ready(function(){
     }
     // if all dropdowns have been selected, then submit.
     //$( "#form-buscar" ).submit();
-    window.location.href = "get_connection.php"
+    window.location.href = "showresult.php?municipio=" +
+      $('#dropdown-municipio option:selected').text().trim() + "&bairro=" +
+      $('#dropdown-bairro option:selected').text().trim();
   });
 </script>
 
