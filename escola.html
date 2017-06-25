@@ -48,28 +48,40 @@
       color: #fff !important;
   }
 
+  .inicio {
+    font-size: 2em;
+  }
+
   .escolaInfoGeral {
-    position: fixed;
     height: 30%;
     width: 90%;
     padding-left: 20%;
   }
 
   .escolaAcessibilidade {
-    position: fixed;
-    margin-top: 14%;
     height: 38%;
     width: 90%;
     padding-left: 20%;
   }
 
   .avaliar {
-      position: fixed;
+      background-color: #f4511e;
       bottom: 0;
       margin-bottom: 10px;
-      padding-left: 20%;
-      width: 90%;
+      text-align: center;
       height: 15%;
+  }
+
+  .navbar-fixed-bottom {
+    height: 8%;
+  }
+
+  .btn{
+    position: relative;
+    left: 20%;
+    margin-left: -20px;
+    top: 50%;
+    margin-top: -50px;
   }
 
 </style>
@@ -79,7 +91,7 @@
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="home.php">Home</a>
+        <a class="navbar-brand inicio" href="home.php"><b>Inicio</b></a>
       </div>
     </div>
   </nav>
@@ -95,17 +107,174 @@
       </div>
 
       <div id="escola-acessibilidade" class="escolaAcessibilidade">
-        <h3>Acessibilidade</h3>
-        <p> Rampas para cadeirantes? </p>
-        <p> Aulas adaptadas para deficientes auditivos?</p>
-      </div>
 
-      <div class="avaliar">
-        <button id="btn-avaliar" type="button" class="btn btn-danger" style="width: 10em; margin-top: 30px "> Avaliar Escola </button>
-      </div>
+        <h3>Questionário de Acessibilidade</h3>
 
+        <p> 1) A escola possui guia rebaixada na entrada e saída? </p>
+        <select id="dropdown-guia" name=guia class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 2) A escola possui escadas com corrimão?</p>
+        <select id="dropdown-escada" name=escada class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 3) A escola possui rampas de acesso com corrimão?</p>
+        <select id="dropdown-rampa" name=rampa class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 4) A escola possui elevador? </p>
+        <select id="dropdown-elevador" name=elevador class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 5) A escola tem professor(a) para surdos?</p>
+        <select id="dropdown-surdo" name=surdo class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 6) A escola tem professor(a) para cegos?</p>
+        <select id="dropdown-cego" name=cego class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 7) Escola tem professor(a) para mudos?</p>
+        <select id="dropdown-mudo" name=mudo class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 8) A escola possui banheiros adaptados para cadeirantes ou deficientes físicos de outra natureza?</p>
+        <select id="dropdown-banheiro" name=banheiro class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 9) A escola possui o refeitório e bebedouro(s) adequado ou adaptável para deficientes físicos?</p>
+        <select id="dropdown-bebedouro" name=bebedouro class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 10) A escola possui bibliotecas acessíveis (corredores, mesas, estantes, publicações em braille, ou outros recursos audiovisuais, etc.)?</p>
+        <select id="dropdown-biblioteca" name=biblioteca class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 11) A escola possui sinalização visual, tátil e/ou sonora?</p>
+        <select id="dropdown-sinalizacao" name=sinalizacao class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br>
+
+        <p> 12) A escola possui laboratórios adaptados para deficientes físicos?</p>
+        <select id="dropdown-laboratorio" name=laboratorio class="form-control" style="width: 20%;" required>
+          <option value"Escolha" selected disabled> Escolha uma opção... </option>
+          <option value"Sim"> Sim </option>
+          <option value"Nao"> Nao </option>
+        </select><br><br>
+
+      </div>
     </form>
   </div>
+
+  </div>
+
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <div class="navbar-footer">
+        <button id="btn-avaliar" type="button" class="btn btn-danger" style="width: 12em; margin-top: 10px"> <b>Avaliar Escola</b> </button>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    $( "#btn-avaliar" ).click(function() {
+
+      if( $('#dropdown-guia option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 1');
+        return;
+      }
+
+      if ( $('#dropdown-escada option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 2');
+        return;
+      }
+
+      if ( $('#dropdown-rampa option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 3');
+        return;
+      }
+
+      if ( $('#dropdown-elevador option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 4');
+        return;
+      }
+
+      if ( $('#dropdown-surdo option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 5');
+        return;
+      }
+
+      if ( $('#dropdown-cego option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 6');
+        return;
+      }
+
+      if ( $('#dropdown-mudo option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 7');
+        return;
+      }
+
+      if ( $('#dropdown-banheiro option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 8');
+        return;
+      }
+
+      if ( $('#dropdown-bebedouro option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 9');
+        return;
+      }
+
+      if ( $('#dropdown-biblioteca option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 10');
+        return;
+      }
+
+      if ( $('#dropdown-sinalizacao option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 11');
+        return;
+      }
+
+      if ( $('#dropdown-laboratorio option:selected').text().trim() == 'Escolha uma opção...' ) {
+        alert('Questionario incompleto! Por favor, selecionar resposta para o item 12');
+        return;
+      }
+
+      // if all dropdowns have been selected, then submit.
+    });
+  </script>
+
 </body>
 
 </html>

@@ -34,6 +34,7 @@ try
       $bairro = $row["bairro"];
       $endereco = $row["endereco"];
       $telefone = $row["telefone"];
+      $telefone_format = "(". substr($telefone, 0, 2) .") ". substr($telefone, 2, 4) ."-". substr($telefone, 6, (strlen($telefone)-6));
       ?>
       <script>
         var objPush = {};
@@ -41,7 +42,7 @@ try
         objPush.Administracao = "<?php echo $administracao; ?>";
         objPush.Bairro = "<?php echo $bairro; ?>";
         objPush.Endereco = "<?php echo $endereco; ?>";
-        objPush.Telefone = "<?php echo $telefone; ?>";
+        objPush.Telefone = "<?php echo $telefone_format; ?>";
         escolas.push(objPush);
       </script>
       <?php
