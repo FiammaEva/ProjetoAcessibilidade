@@ -38,10 +38,10 @@ try
       <script>
         var objPush = {};
         objPush.Escola = "<?php echo $escola; ?>";
-        objPush.Administração = "<?php echo $administracao; ?>";
+        objPush.Administracao = "<?php echo $administracao; ?>";
         objPush.Bairro = "<?php echo $bairro; ?>";
         objPush.Endereco = "<?php echo $endereco; ?>";
-        objPush.Numero = "<?php echo $telefone; ?>";
+        objPush.Telefone = "<?php echo $telefone; ?>";
         escolas.push(objPush);
       </script>
       <?php
@@ -60,12 +60,20 @@ try
 
         data: escolas,
 
+        rowClick: function(args) {
+          window.location.href = "escola.php?escola=" + args.item.Escola +
+            "&administracao=" + args.item.Administracao +
+            "&bairro=" + args.item. Bairro +
+            "&endereco=" + args.item.Endereco +
+            "&telefone=" + args.item.Telefone;
+        },
+
         fields: [
           { name: "Escola", type: "text", width: 150 },
-          { name: "Administração", type: "text", width: 60 },
+          { name: "Administracao", type: "text", width: 60 },
           { name: "Bairro", type: "text", width: 100 },
           { name: "Endereco", type: "text", width: 180 },
-          { name: "Numero", type: "text", width:60 },
+          { name: "Telefone", type: "text", width:60 },
           { type: "textarea"}
         ]
       });
