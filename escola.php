@@ -4,6 +4,7 @@
   $username="root";
   $password="";
   $dbname = "acessibilidade_escolas";
+  $codigo=100;
 
   include("escola.html");
 
@@ -19,7 +20,6 @@
     $bairro=$_GET['bairro'];
     $endereco=$_GET['endereco'];
     $telefone=$_GET['telefone'];
-    $codigo='teste';
 
     ?><script>
         //$( "#dropdown-municipio" ).append( "<option value='ola'> ola </option>" );
@@ -47,17 +47,17 @@
       if ($result->rowCount() > 0) {
         // output data of each row
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+          $codigo=$row["codigo_escola"];
           ?><script>
-            //alert("1 result: " + <?php echo $row["codigo_escola"]; ?>);
+            //alert("1 result: " + <?php echo $codigo; ?>);
           </script><?php
         }
       }
       else {
         echo "0 results";
       }
-
       // Insere questionario da escola
-      $escola_id=1;
+      $escola_id=$codigo;
       $guia = $_GET['guia'];
       $escada = $_GET['escada'];
       $rampa = $_GET['rampa'];
@@ -71,7 +71,7 @@
       $sinalizacao = $_GET['sinalizacao'];
       $laboratorio = $_GET['laboratorio'];
 
-      $sql = "INSERT INTO escola_resultado (escola_id, usuario_id, guia, escada, rampa, elevador, surdo, cego, mudo, banheiro, bebedouro, biblioteca, sinalizacao, laboratorio) VALUES (1, '$escola_id', '$guia', '$escada', '$rampa', '$elevador', '$surdo', '$cego', '$mudo', '$banheiro', '$bebedouro', '$biblioteca', '$sinalizacao', '$laboratorio')";
+      $sql = "INSERT INTO escola_resultado (escola_id, usuario_id, guia, escada, rampa, elevador, surdo, cego, mudo, banheiro, bebedouro, biblioteca, sinalizacao, laboratorio) VALUES ('$escola_id', 1, '$guia', '$escada', '$rampa', '$elevador', '$surdo', '$cego', '$mudo', '$banheiro', '$bebedouro', '$biblioteca', '$sinalizacao', '$laboratorio')";
 
       $result = $conn->prepare($sql);
       try { $result->execute();}
@@ -80,7 +80,12 @@
       ?><script>
         alert("A sua avaliação foi armazenada com sucesso. Obrigado!");
 
-        window.location.href = "avaliacao-escola.php?escola_id=" + <?php echo $escola_id ?>;
+        window.location.href = "avaliacao-escola.php?escola_id=" + <?php echo $escola_id; ?> +
+          "&escola=" + "<?php echo $_GET['escola']; ?>" +
+          "&administracao=" + "<?php echo $_GET['administracao']; ?>" +
+          "&bairro=" + "<?php echo $_GET['bairro']; ?>" +
+          "&endereco=" + "<?php echo $_GET['endereco']; ?>" +
+          "&telefone=" + "<?php echo $_GET['telefone']; ?>";
       </script><?php
 
 		} else {
