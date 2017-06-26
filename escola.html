@@ -97,7 +97,6 @@
   </nav>
 
   <div class="container-fluid">
-    <form id="form-escola">
 
       <div id="escola-titulo" class="escola-titulo" style="padding-left: 15%;">
       </div>
@@ -106,7 +105,8 @@
         <h3>Geral</h3>
       </div>
 
-      <div id="escola-acessibilidade" class="escolaAcessibilidade">
+      <form id="form-questionario">
+        <div id="escola-acessibilidade" class="escolaAcessibilidade">
 
         <h3>Questionário de Acessibilidade</h3>
 
@@ -194,6 +194,12 @@
           <option value"Nao"> Nao </option>
         </select><br><br>
 
+        <input id="escola" type="hidden" name="escola" value="" />
+        <input id="administracao" type="hidden" name="administracao" value="" />
+        <input id="bairro" type="hidden" name="bairro" value="" />
+        <input id="endereco" type="hidden" name="endereco" value="" />
+        <input id="telefone" type="hidden" name="telefone" value="" />
+
       </div>
     </form>
   </div>
@@ -211,67 +217,87 @@
   <script>
     $( "#btn-avaliar" ).click(function() {
 
-      if( $('#dropdown-guia option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var guia = $('#dropdown-guia option:selected').text().trim();
+      if(  guia == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 1');
         return;
       }
 
-      if ( $('#dropdown-escada option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var escada = $('#dropdown-escada option:selected').text().trim();
+      if ( escada == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 2');
         return;
       }
 
-      if ( $('#dropdown-rampa option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var rampa = $('#dropdown-rampa option:selected').text().trim();
+      if ( rampa == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 3');
         return;
       }
 
-      if ( $('#dropdown-elevador option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var elevador = $('#dropdown-elevador option:selected').text().trim();
+      if (  elevador == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 4');
         return;
       }
 
-      if ( $('#dropdown-surdo option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var surdo = $('#dropdown-surdo option:selected').text().trim();
+      if (  surdo == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 5');
         return;
       }
 
-      if ( $('#dropdown-cego option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var cego = $('#dropdown-cego option:selected').text().trim();
+      if ( cego == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 6');
         return;
       }
 
-      if ( $('#dropdown-mudo option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var mudo = $('#dropdown-mudo option:selected').text().trim();
+      if ( mudo == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 7');
         return;
       }
 
-      if ( $('#dropdown-banheiro option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var banheiro = $('#dropdown-banheiro option:selected').text().trim();
+      if ( banheiro == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 8');
         return;
       }
 
-      if ( $('#dropdown-bebedouro option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var bebedouro = $('#dropdown-bebedouro option:selected').text().trim();
+      if ( bebedouro == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 9');
         return;
       }
 
-      if ( $('#dropdown-biblioteca option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var biblioteca = $('#dropdown-biblioteca option:selected').text().trim();
+      if ( biblioteca == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 10');
         return;
       }
 
-      if ( $('#dropdown-sinalizacao option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var sinalizacao = $('#dropdown-sinalizacao option:selected').text().trim();
+      if ( sinalizacao == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 11');
         return;
       }
 
-      if ( $('#dropdown-laboratorio option:selected').text().trim() == 'Escolha uma opção...' ) {
+      var laboratorio = $('#dropdown-laboratorio option:selected').text().trim();
+      if ( laboratorio == 'Escolha uma opção...' ) {
         alert('Questionario incompleto! Por favor, selecionar resposta para o item 12');
         return;
       }
 
+      $('#escola').val('<?php echo $_GET['escola'];?>');
+      $('#administracao').val('<?php echo $_GET['administracao'];?>');
+      $('#bairro').val('<?php echo $_GET['bairro'];?>');
+      $('#endereco').val('<?php echo $_GET['endereco'];?>');
+      $('#telefone').val('<?php echo $_GET['telefone'];?>');
+
       // if all dropdowns have been selected, then submit.
+      $("#form-questionario").submit();
+
     });
   </script>
 
